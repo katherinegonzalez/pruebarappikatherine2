@@ -167,10 +167,13 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable editable) {
-        adapterThemes.getFilter().filter(editable.toString());
-        //Actualizar recyvler view
-        adapterThemes.notifyDataSetChanged();
-        themeList.setAdapter(adapterThemes);
+        if(adapterThemes != null){
+            adapterThemes.getFilter().filter(editable.toString());
+            //Actualizar recyvler view
+            adapterThemes.notifyDataSetChanged();
+            themeList.setAdapter(adapterThemes);
+        }
+
     }
 
     @Override
