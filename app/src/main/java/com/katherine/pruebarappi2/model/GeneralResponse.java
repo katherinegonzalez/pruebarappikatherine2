@@ -7,7 +7,7 @@ public class GeneralResponse {
     @SerializedName("kind")
     private String kind;
     @SerializedName("data")
-    private String data;
+    private Data data;
 
     public GeneralResponse() {
     }
@@ -20,11 +20,11 @@ public class GeneralResponse {
         this.kind = kind;
     }
 
-    public String getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Data data) {
         this.data = data;
     }
 }

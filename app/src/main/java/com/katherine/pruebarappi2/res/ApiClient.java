@@ -1,4 +1,4 @@
-package com.katherine.pruebarappi2.util;
+package com.katherine.pruebarappi2.res;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

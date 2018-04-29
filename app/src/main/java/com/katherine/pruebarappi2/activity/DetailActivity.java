@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.katherine.pruebarappi2.R;
+import com.katherine.pruebarappi2.util.Util;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -11,5 +12,13 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(Util.pDialog != null){
+            Util.pDialog.dismiss();
+        }
     }
 }

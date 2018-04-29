@@ -1,4 +1,4 @@
-package com.katherine.pruebarappi2.util;
+package com.katherine.pruebarappi2.res;
 
 import com.katherine.pruebarappi2.model.GeneralResponse;
 
