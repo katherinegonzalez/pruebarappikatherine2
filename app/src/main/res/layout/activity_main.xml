@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.katherine.pruebarappi2.activity.MainActivity"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
+    android:paddingTop="@dimen/general_margin"
+    android:paddingBottom="@dimen/general_margin"
     android:orientation="vertical"
     android:background="@color/light_gray">
 
@@ -15,9 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/search"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginRight="@dimen/general_margin"
+        android:layout_marginLeft="@dimen/general_margin"
+        android:layout_marginTop="@dimen/general_margin_mid"
         android:drawableLeft="@drawable/ic_search_black_24dp"
         android:textCursorDrawable="@null" />
 
@@ -25,10 +25,10 @@
         android:id="@+id/txt_there_is_no_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_title"
         android:text="@string/no_items_to_show"
         android:gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/general_margin_3mid"
         android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
@@ -36,9 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginLeft="@dimen/general_margin"
+        android:layout_marginRight="@dimen/general_margin">
     </android.support.v7.widget.RecyclerView>
 
 

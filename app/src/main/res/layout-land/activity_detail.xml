@@ -18,19 +18,19 @@
             android:textColor="@color/primaryText"
             android:text="Title"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_title"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginTop="@dimen/general_margin"
+            android:layout_marginBottom="@dimen/general_margin"
+            android:layout_marginLeft="@dimen/general_margin"/>
 
         <LinearLayout
             android:id="@+id/img_banner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginLeft="@dimen/general_margin"
+            android:layout_marginBottom="@dimen/general_margin"/>
 
     </LinearLayout>
 
@@ -46,8 +46,8 @@
             android:layout_height="0dp"
             android:layout_weight="2.7"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginLeft="@dimen/general_margin"
+            android:layout_marginRight="@dimen/general_margin">
             <TextView
                 android:id="@+id/txt_description"
                 android:layout_width="match_parent"
@@ -55,9 +55,9 @@
                 android:textColor="@color/secondaryText"
                 android:text="Long descripction here"
                 android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                android:textSize="@dimen/text_general"
+                android:layout_marginRight="@dimen/general_margin"
+                android:layout_marginLeft="@dimen/general_margin"/>
         </ScrollView>
 
 
@@ -65,18 +65,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginRight="@dimen/general_margin"
+            android:layout_marginLeft="@dimen/general_margin"
+            android:layout_marginBottom="@dimen/general_margin"
             android:layout_weight="0.3"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/general_margin"
             android:background="@color/secondaryText">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/general_margin"
                 android:layout_gravity="center">
 
                 <LinearLayout
@@ -90,8 +90,8 @@
                         android:text="@string/over18"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="@dimen/text_general"
+                        android:layout_marginLeft="@dimen/general_margin"/>
 
                     <TextView
                         android:id="@+id/txt_over_18"
@@ -100,8 +100,8 @@
                         android:text="Si"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="@dimen/text_general"
+                        android:layout_marginLeft="@dimen/general_margin"/>
 
                 </LinearLayout>
 
@@ -116,8 +116,8 @@
                         android:text="@string/audience_target"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="@dimen/text_general"
+                        android:layout_marginLeft="@dimen/general_margin"/>
 
                     <TextView
                         android:id="@+id/txt_audience_target"
@@ -126,8 +126,8 @@
                         android:text="stories"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="@dimen/text_general"
+                        android:layout_marginLeft="@dimen/general_margin"/>
 
                 </LinearLayout>
 
@@ -142,8 +142,8 @@
                         android:text="@string/subscribers"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="@dimen/text_general"
+                        android:layout_marginLeft="@dimen/general_margin"/>
 
                     <TextView
                         android:id="@+id/txt_suscribers"
@@ -152,8 +152,8 @@
                         android:text="2343224334"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="@dimen/text_general"
+                        android:layout_marginLeft="@dimen/general_margin"/>
 
                 </LinearLayout>
 
@@ -161,7 +161,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="@dimen/general_margin">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -169,8 +169,8 @@
                         android:text="@string/creation_date"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="@dimen/text_general"
+                        android:layout_marginLeft="@dimen/general_margin"/>
 
                     <TextView
                         android:id="@+id/txt_date"
@@ -179,8 +179,8 @@
                         android:text="03/05/2018"
                         android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="10dp"/>
+                        android:textSize="@dimen/text_general"
+                        android:layout_marginLeft="@dimen/general_margin"/>
 
                 </LinearLayout>
 
@@ -193,7 +193,7 @@
                 android:layout_height="90dp"
                 android:src="@mipmap/ic_launcher"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/general_margin"
                 />
 
 

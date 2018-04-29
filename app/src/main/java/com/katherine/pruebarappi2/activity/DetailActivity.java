@@ -4,8 +4,6 @@ package com.katherine.pruebarappi2.activity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spanned;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,6 +12,7 @@ import android.widget.Toast;
 
 import com.katherine.pruebarappi2.R;
 import com.katherine.pruebarappi2.util.DateFormat;
+import com.katherine.pruebarappi2.util.Messages;
 import com.katherine.pruebarappi2.util.Util;
 import com.katherine.pruebarappi2.util.ValidateString;
 import com.squareup.picasso.Picasso;
@@ -30,6 +29,7 @@ public class DetailActivity extends AppCompatActivity {
     private String imgBottom = "";
     private DateFormat dateFormat = new DateFormat();
     private ValidateString validateString = new ValidateString();
+    private Messages messages = Messages.getInstance();
 
 
     @Override
@@ -116,16 +116,7 @@ public class DetailActivity extends AppCompatActivity {
             validationImageTop();
             validationSubtitleAndDescription();
             txtTitle.setText(titleDescription);
-
-            Spanned sp;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                sp = Html.fromHtml("<![CDATA["+Util.dataChildrenDetail.getDescriptionHtml()+"...]]>",Html.FROM_HTML_MODE_LEGACY);
-
-            } else {
-                sp = Html.fromHtml("<![CDATA["+Util.dataChildrenDetail.getDescriptionHtml()+"...]]>");
-
-            }
-            txtDescription.setText(sp);
+            txtDescription.setText(Util.dataChildrenDetail.getDescription());
 
             txtOver18.setText(Util.dataChildrenDetail.getOver18() ? "Si" : "No");
             txtSuscribers.setText(Util.dataChildrenDetail.getSubscribers().toString());
@@ -148,7 +139,7 @@ public class DetailActivity extends AppCompatActivity {
                             }
                             @Override
                             public void onError() {
-                                Toast.makeText(DetailActivity.this,"It's not possible to show the image now!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetailActivity.this,messages.errorImage(), Toast.LENGTH_SHORT).show();
                             }
                         });
             }

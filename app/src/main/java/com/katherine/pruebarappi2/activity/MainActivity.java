@@ -1,6 +1,5 @@
 package com.katherine.pruebarappi2.activity;
 
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,20 +9,19 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.katherine.pruebarappi2.R;
 import com.katherine.pruebarappi2.adapter.AdapterThemes;
 import com.katherine.pruebarappi2.model.Children;
-import com.katherine.pruebarappi2.model.DataChildren;
 import com.katherine.pruebarappi2.model.GeneralResponse;
 import com.katherine.pruebarappi2.res.ApiClient;
 import com.katherine.pruebarappi2.res.ApiServiceClientInterface;
 import com.katherine.pruebarappi2.storage.SaveInCache;
 import com.katherine.pruebarappi2.util.ConvertGson;
 import com.katherine.pruebarappi2.util.Dialogs;
+import com.katherine.pruebarappi2.util.Messages;
 import com.katherine.pruebarappi2.util.NetValidation;
 import com.katherine.pruebarappi2.util.Util;
 
@@ -48,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     private Dialogs dialogs = new Dialogs();
     private String filename = "themes";
     private String searchFilterText = "";
+    private Messages messages = Messages.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
                 initializeListThemeAdapter();
             }else{
                 txtThereIsNoItems.setVisibility(View.VISIBLE);
-                Toast.makeText(MainActivity.this, "At this moment there is no themes to show. Please try again when you have Internet conection.", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, messages.noThemesByFailConection(), Toast.LENGTH_LONG).show();
                 itemsThemes = new ArrayList<>();
                 initializeListThemeAdapter();
 
@@ -152,21 +151,21 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
                         if(Util.pDialog != null)
                             Util.pDialog.dismiss();
                         txtThereIsNoItems.setVisibility(View.GONE);
-                        Toast.makeText(MainActivity.this, "It is not possible to show themes right now. Please try later!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, messages.noThemes(), Toast.LENGTH_LONG).show();
                     }
 
                 }else{
                     if(Util.pDialog != null)
                         Util.pDialog.dismiss();
 
-                    String error = "Server error! Please try again.";
+                    String error = messages.serverError();
                     try {
                         JSONObject jObjError = new JSONObject(response.errorBody().string());
-                        Log.d("jObjError", jObjError +"");
+                        Log.d("Error: ", jObjError +"");
                         error= jObjError.get("errors").toString();
-                        Log.d("ERROR", error);
+                        Log.d("Error: ", error);
                     } catch (Exception e) {
-                        Log.d("EXCEPTION", e +"");
+                        Log.d("Exception: ", e +"");
                     }
 
                     Toast.makeText(MainActivity.this, error, Toast.LENGTH_LONG).show();
@@ -178,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
             public void onFailure(Call<GeneralResponse> call, Throwable t) {
                 if(Util.pDialog != null)
                     Util.pDialog.dismiss();
-                Toast.makeText(MainActivity.this, "Please check your Internet conection!", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, messages.errorInternet(), Toast.LENGTH_LONG).show();
             }
         });
     }

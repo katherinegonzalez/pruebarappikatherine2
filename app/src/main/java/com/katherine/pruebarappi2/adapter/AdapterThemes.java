@@ -23,6 +23,7 @@ import com.katherine.pruebarappi2.storage.SaveInCache;
 import com.katherine.pruebarappi2.util.CircleTransform;
 import com.katherine.pruebarappi2.util.ConvertGson;
 import com.katherine.pruebarappi2.util.Dialogs;
+import com.katherine.pruebarappi2.util.Messages;
 import com.katherine.pruebarappi2.util.Util;
 import com.katherine.pruebarappi2.util.ValidateString;
 
@@ -39,6 +40,7 @@ public class AdapterThemes extends RecyclerView.Adapter<AdapterThemes.AdapterThe
     private ConvertGson convertGson = new ConvertGson();
     private ValidateString validateString = new ValidateString();
     private Dialogs dialogs = new Dialogs();
+    private Messages messages = Messages.getInstance();
 
     public AdapterThemes(Activity activity, List<Children> itemsThemes, String filename) {
         this.activity = activity;
@@ -118,11 +120,11 @@ public class AdapterThemes extends RecyclerView.Adapter<AdapterThemes.AdapterThe
                             Intent myIntent = new Intent(activity, DetailActivity.class);
                             activity.startActivity(myIntent);
                         }else{
-                            Toast.makeText(activity, "It is not possible to show the theme detail right now. Please try later!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity, messages.errorDetail(), Toast.LENGTH_LONG).show();
                         }
 
                     }else{
-                        Toast.makeText(activity, "It is not possible to show the theme detail right now. Please try later!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity, messages.errorDetail(), Toast.LENGTH_LONG).show();
 
                     }
             }
@@ -131,11 +133,7 @@ public class AdapterThemes extends RecyclerView.Adapter<AdapterThemes.AdapterThe
 
     @Override
     public int getItemCount() {
-        //if(itemsThemesFiltered != null){
             return itemsThemesFiltered.size();
-        /*}
-
-        return 0;*/
     }
 
     @Override
