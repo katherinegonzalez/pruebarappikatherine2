@@ -8,4 +8,5 @@ public class Util {
 
     public static DataChildren dataChildrenDetail= new DataChildren();
     public static SweetAlertDialog pDialog;
+    public static String appTitle = "Rappi Test";
 }

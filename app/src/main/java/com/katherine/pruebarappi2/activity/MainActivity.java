@@ -1,5 +1,6 @@
 package com.katherine.pruebarappi2.activity;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,11 +47,15 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     private ConvertGson convertGson = new ConvertGson();
     private Dialogs dialogs = new Dialogs();
     private String filename = "themes";
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        actionBar = getSupportActionBar();
+        actionBar.setTitle(Util.appTitle);
 
         themeList = findViewById(R.id.list_themes);
         LinearLayoutManager lim = new LinearLayoutManager(this);
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
         themeList.setLayoutManager(lim);
 
         searchFilter = findViewById(R.id.search_filter);
+        searchFilter.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         searchFilter.addTextChangedListener(this);
 
         txtThereIsNoItems = findViewById(R.id.txt_there_is_no_items);
