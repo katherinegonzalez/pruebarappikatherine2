@@ -87,7 +87,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Over 18: "
+                        android:text="@string/over18"
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="14sp"
@@ -113,7 +113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Audience Target: "
+                        android:text="@string/audience_target"
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="14sp"
@@ -139,7 +139,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Suscribers: "
+                        android:text="@string/subscribers"
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="14sp"
@@ -166,7 +166,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Creation Date: "
+                        android:text="@string/creation_date"
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="14sp"

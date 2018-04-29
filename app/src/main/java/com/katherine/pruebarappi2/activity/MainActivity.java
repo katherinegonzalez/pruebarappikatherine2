@@ -47,15 +47,17 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     private ConvertGson convertGson = new ConvertGson();
     private Dialogs dialogs = new Dialogs();
     private String filename = "themes";
-    private ActionBar actionBar;
+    private String searchFilterText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        actionBar = getSupportActionBar();
-        actionBar.setTitle(Util.appTitle);
+        if(savedInstanceState != null){
+            //Recupero la instancia en caso de que la haya (para rotación de pantalla o cuando regreso del detalle)
+            searchFilterText = savedInstanceState.getString("search_filer");
+        }
 
         themeList = findViewById(R.id.list_themes);
         LinearLayoutManager lim = new LinearLayoutManager(this);
@@ -69,6 +71,17 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
         txtThereIsNoItems = findViewById(R.id.txt_there_is_no_items);
 
         netValidation();
+
+
+    }
+
+    public void validateSearchText(){
+
+        if(!searchFilterText.equals("")){
+            initializeListFilter(searchFilterText.toString());
+        }else{
+            themeList.setAdapter(adapterThemes);
+        }
 
     }
 
@@ -93,11 +106,20 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
 
     public void initializeListThemeAdapter(){
         adapterThemes = new AdapterThemes(this, itemsThemes, filename);
-        themeList.setAdapter(adapterThemes);
+        validateSearchText(); //Si el filtro contiene búsqueda actualizo la lista con esa búsqueda, de lo contrario pongo la lista completa
 
         if(Util.pDialog != null)
             Util.pDialog.dismiss();
 
+    }
+
+    public void initializeListFilter(String searchText){
+        if(adapterThemes != null){
+            adapterThemes.getFilter().filter(searchText);
+            //Actualizar recyvler view
+            adapterThemes.notifyDataSetChanged();
+            themeList.setAdapter(adapterThemes);
+        }
     }
 
     public void saveData(GeneralResponse generalResponse, String filename){
@@ -148,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
                     }
 
                     Toast.makeText(MainActivity.this, error, Toast.LENGTH_LONG).show();
-
                 }
 
             }
@@ -170,16 +191,13 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+        initializeListFilter(charSequence.toString());
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if(adapterThemes != null){
-            adapterThemes.getFilter().filter(editable.toString());
-            //Actualizar recyvler view
-            adapterThemes.notifyDataSetChanged();
-            themeList.setAdapter(adapterThemes);
-        }
+
+
 
     }
 
@@ -188,5 +206,15 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
         super.onDestroy();
         if(Util.pDialog != null)
             Util.pDialog.dismiss();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if(searchFilter.getText() != null){
+            //Guardo la instancia para cuando haya rotación de pantalla o presion el botón "atras" del detalle
+            outState.putString("search_filer", searchFilter.getText().toString());
+        }
+
     }
 }

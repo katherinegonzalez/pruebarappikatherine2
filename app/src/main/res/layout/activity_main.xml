@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:text="There is no items to show right now. "
+        android:text="@string/no_items_to_show"
         android:gravity="center"
         android:layout_marginTop="15dp"
         android:visibility="gone"/>

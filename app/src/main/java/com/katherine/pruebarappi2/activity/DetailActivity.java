@@ -15,11 +15,8 @@ import android.widget.Toast;
 import com.katherine.pruebarappi2.R;
 import com.katherine.pruebarappi2.util.DateFormat;
 import com.katherine.pruebarappi2.util.Util;
+import com.katherine.pruebarappi2.util.ValidateString;
 import com.squareup.picasso.Picasso;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -32,6 +29,8 @@ public class DetailActivity extends AppCompatActivity {
     private String imgTop = "";
     private String imgBottom = "";
     private DateFormat dateFormat = new DateFormat();
+    private ValidateString validateString = new ValidateString();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,6 @@ public class DetailActivity extends AppCompatActivity {
         txtDate = findViewById(R.id.txt_date);
         imgHeader = findViewById(R.id.img_header);
         imgBanner = findViewById(R.id.img_banner);
-
 
         setData();
         actiobBar();
@@ -64,32 +62,18 @@ public class DetailActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle(Util.appTitle);
         actionBar.setSubtitle(title);
     }
 
-    public String img(String image){
-        String img = "";
-        if(image != null) {
-            if (!image.equals("")) {
-                img = image;
-            }
-        }
-
-        return img;
-    }
-
-
-
     public void validationImageTop(){
-        if(!img(Util.dataChildrenDetail.getBannerImg()).equals("")){
-            imgTop = img(Util.dataChildrenDetail.getBannerImg());
+        if(!validateString.str(Util.dataChildrenDetail.getBannerImg()).equals("")){
+            imgTop = validateString.str(Util.dataChildrenDetail.getBannerImg());
         }else{
-            if(!img(Util.dataChildrenDetail.getHeaderImg()).equals("")){
-                imgTop =img(Util.dataChildrenDetail.getHeaderImg());
+            if(!validateString.str(Util.dataChildrenDetail.getHeaderImg()).equals("")){
+                imgTop = validateString.str(Util.dataChildrenDetail.getHeaderImg());
             }else{
-                if(!img(Util.dataChildrenDetail.getIconImg()).equals("")){
-                    imgTop =  img(Util.dataChildrenDetail.getIconImg());
+                if(!validateString.str(Util.dataChildrenDetail.getIconImg()).equals("")){
+                    imgTop =  validateString.str(Util.dataChildrenDetail.getIconImg());
                 }
             }
         }
@@ -97,48 +81,28 @@ public class DetailActivity extends AppCompatActivity {
 
     public void validationImageBottom(){
 
-            if(!img(Util.dataChildrenDetail.getHeaderImg()).equals("")){
-                imgBottom = img(Util.dataChildrenDetail.getHeaderImg());
+            if(!validateString.str(Util.dataChildrenDetail.getHeaderImg()).equals("")){
+                imgBottom = validateString.str(Util.dataChildrenDetail.getHeaderImg());
             }else{
-                if(!img(Util.dataChildrenDetail.getIconImg()).equals("")){
-                    imgBottom =img(Util.dataChildrenDetail.getIconImg());
+                if(!validateString.str(Util.dataChildrenDetail.getIconImg()).equals("")){
+                    imgBottom = validateString.str(Util.dataChildrenDetail.getIconImg());
                 }else{
-                    if(!Util.dataChildrenDetail.getBannerImg().equals("")){
-                        imgTop =  Util.dataChildrenDetail.getBannerImg();
+                    if(!validateString.str(Util.dataChildrenDetail.getBannerImg()).equals("")){
+                        imgTop =  validateString.str(Util.dataChildrenDetail.getBannerImg());
                     }
                 }
             }
-
-    }
-
-    public String headerTitle(String title){
-        String headerTitle = "";
-        if(title != null){
-            if(!title.equals("")){
-                headerTitle = title;
-            }
-        }
-        return "";
-    }
-
-    public String subtitle(String subt){
-        String subtitle = "";
-        if(subt != null){
-            if(!subt.equals("")){
-                subtitle = subt;
-            }
-        }
-        return subtitle;
     }
 
     public void validationSubtitleAndDescription(){
 
-        if(!subtitle(Util.dataChildrenDetail.getHeaderTitle()).equals("")){
-            title = subtitle(Util.dataChildrenDetail.getHeaderTitle());
+        if(!validateString.str(Util.dataChildrenDetail.getHeaderTitle()).equals("")){
+            title = validateString.str(Util.dataChildrenDetail.getHeaderTitle());
             titleDescription = "About " + title;
         }else{
-            if(!subtitle(Util.dataChildrenDetail.getTitle()).equals("")){
-                title = subtitle(Util.dataChildrenDetail.getTitle());
+            if(!validateString.str(Util.dataChildrenDetail.getTitle()).equals("")){
+                title = validateString.str(Util.dataChildrenDetail.getTitle());
+                titleDescription = "About " + title;
             }
         }
 

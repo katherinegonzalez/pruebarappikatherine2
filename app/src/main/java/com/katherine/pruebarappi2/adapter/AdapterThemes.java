@@ -24,6 +24,7 @@ import com.katherine.pruebarappi2.util.CircleTransform;
 import com.katherine.pruebarappi2.util.ConvertGson;
 import com.katherine.pruebarappi2.util.Dialogs;
 import com.katherine.pruebarappi2.util.Util;
+import com.katherine.pruebarappi2.util.ValidateString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class AdapterThemes extends RecyclerView.Adapter<AdapterThemes.AdapterThe
     private String filename;
     private SaveInCache saveInCache = new SaveInCache();
     private ConvertGson convertGson = new ConvertGson();
+    private ValidateString validateString = new ValidateString();
     private Dialogs dialogs = new Dialogs();
 
     public AdapterThemes(Activity activity, List<Children> itemsThemes, String filename) {
@@ -52,17 +54,47 @@ public class AdapterThemes extends RecyclerView.Adapter<AdapterThemes.AdapterThe
         return new AdapterThemeViewHolder(v);
     }
 
+    public String validationIcon(String iconImage, String headerImage, String bannerImage){
+        String icon = "";
+        if(!validateString.str(iconImage).equals("")){
+            icon = validateString.str(iconImage);
+        }else{
+            if(!validateString.str(headerImage).equals("")){
+                icon = validateString.str(headerImage);
+            }else{
+                if(!validateString.str(bannerImage).equals("")){
+                    icon =  validateString.str(bannerImage);
+                }
+            }
+        }
+        return icon;
+
+    }
+
+    public String validationTitle(String headerTitle, String title){
+        String titleText = "";
+        if(!validateString.str(headerTitle).equals("")){
+            titleText = validateString.str(headerTitle);
+
+        }else{
+            if(!validateString.str(title).equals("")){
+                titleText = validateString.str(title);
+            }
+        }
+        return titleText;
+
+    }
+
+
     @Override
     public void onBindViewHolder(AdapterThemeViewHolder holder, int position) {
         final Children theme = itemsThemesFiltered.get(position);
 
-        holder.txtTitle.setText(theme.getData().getHeaderTitle());
+        holder.txtTitle.setText(validationTitle(theme.getData().getHeaderTitle(), theme.getData().getTitle()));
         holder.txtDescripction.setText(theme.getData().getPublicDescription());
 
-        if(theme.getData().getIconImg() != null){
-            if(!theme.getData().getIconImg().equals("")){
-
-                Glide.with(holder.imageTheme.getContext()).load(theme.getData().getIconImg())
+            if(!validationIcon(theme.getData().getIconImg(), theme.getData().getHeaderImg(), theme.getData().getBannerImg()).equals("")){
+                Glide.with(holder.imageTheme.getContext()).load(validationIcon(theme.getData().getIconImg(), theme.getData().getHeaderImg(), theme.getData().getBannerImg()))
                         .crossFade()
                         .thumbnail(0.5f)
                         .bitmapTransform(new CircleTransform(holder.imageTheme.getContext()))
@@ -70,7 +102,6 @@ public class AdapterThemes extends RecyclerView.Adapter<AdapterThemes.AdapterThe
                         .into(holder.imageTheme);
 
             }
-        }
 
         holder.layoutTheme.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,11 +131,11 @@ public class AdapterThemes extends RecyclerView.Adapter<AdapterThemes.AdapterThe
 
     @Override
     public int getItemCount() {
-        if(itemsThemesFiltered != null){
+        //if(itemsThemesFiltered != null){
             return itemsThemesFiltered.size();
-        }
+        /*}
 
-        return 0;
+        return 0;*/
     }
 
     @Override
@@ -119,9 +150,18 @@ public class AdapterThemes extends RecyclerView.Adapter<AdapterThemes.AdapterThe
                     List<Children> filteredList = new ArrayList<>();
                     for (Children row : itemsThemes) {
 
-                        if (row.getData().getHeaderTitle().toLowerCase().contains(charString.toLowerCase())) {
-                            filteredList.add(row);
+                        if(row.getData().getHeaderTitle() != null){
+                            if (row.getData().getHeaderTitle().toLowerCase().contains(charString.toLowerCase())) {
+                                filteredList.add(row);
+                            }
+                        }else {
+                            if(row.getData().getTitle() != null){
+                                if (row.getData().getTitle().toLowerCase().contains(charString.toLowerCase())) {
+                                    filteredList.add(row);
+                                }
+                            }
                         }
+
                     }
 
                     itemsThemesFiltered = filteredList;
