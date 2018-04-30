@@ -38,3 +38,10 @@ Por otro lado se encuentran también dentro del paquete util las clases:
   - Dialogs: manejo de dialogs de la app
   - Messages: manejo de mensajes
   - Util: para variables globales
+  
+### Requerimientos Cumplidos ###
+
+* Se consume la API de temas, los cuales son mostrados en un listado
+* Se puede visualizar el detalle de cada tema
+* Funciona tanto online como offline (caché)
+* Funcionamiento y diseño tanto en landscape como portrait.
