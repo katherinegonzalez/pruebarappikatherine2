@@ -21,7 +21,7 @@ public class Dialogs {
 
         Util.pDialog = new SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE);
         Util.pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        Util.pDialog.setTitleText("Cargando...");
+        Util.pDialog.setTitleText("Loading...");
         Util.pDialog.setCancelable(false);
     }
 }

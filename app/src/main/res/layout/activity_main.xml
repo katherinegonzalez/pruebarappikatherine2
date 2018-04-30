@@ -19,7 +19,8 @@
         android:layout_marginLeft="@dimen/general_margin"
         android:layout_marginTop="@dimen/general_margin_mid"
         android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:textCursorDrawable="@null" />
+        android:textCursorDrawable="@null"
+        android:hint="@string/search"/>
 
     <TextView
         android:id="@+id/txt_there_is_no_items"

@@ -10,12 +10,12 @@
                 android:width="1dp"
                 android:color="@color/light_gray2" />
             <corners
-                android:radius="1dp" />
+                android:radius="15dp" />
             <padding
-                android:bottom="10dp"
-                android:left="10dp"
-                android:right="10dp"
-                android:top="10dp" />
+                android:bottom="@dimen/general_margin"
+                android:left="@dimen/general_margin"
+                android:right="@dimen/general_margin"
+                android:top="@dimen/general_margin" />
         </shape>
     </item>
 
