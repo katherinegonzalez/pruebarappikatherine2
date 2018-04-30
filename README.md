@@ -8,7 +8,7 @@
 
 	* Interfaz de detalle de un tema (activity_detail): Esta interfaz permite al usuario visualizar el detalle de un tema en específico. Se construyó una para portrait y otra para landscape.
 	
-* Capa de negocio: En esta capa se encuentra toda la lógica del negocio de la aplicación. Esta capa conecta a la capa de persistencia o datos con la capa de presentación o vistas. Hacen parte de la capa de negocio las clases que están ubicadas en el paquete activity y el paquete fragments. En el paquete activity se encuentran: 
+* Capa de negocio: En esta capa se encuentra toda la lógica del negocio de la aplicación. Esta capa conecta a la capa de persistencia o datos con la capa de presentación o vistas. Hacen parte de la capa de negocio las clases que están ubicadas en el paquete activity. En el paquete activity se encuentran: 
 
 	* MainActivity: Contiene la lógica referente a la interfaz activity_main. Dentro de ésta se realiza la petición al endpoint que traen el listado de temas, los cuales son almacenados en caché para que la aplicación pueda ser utilizada también de manera offline. Estos procesos  son realizados con la ayuda de las siguientes clases: 
 
@@ -23,7 +23,7 @@
 		- ValidateString (paquete util): permite validar si un valor es nullo o vacío.
 	 
 * Capa de datos o persistencia: En esta capa se encuentran las clases que están en el paquete model, las cuales permiten fijar y obtener los datos de los temas, ya sea mapeando la respuesta desde el endpoint de la API o mapeando la información que se ha guardado en forma de json el dispositivo. Estas clases son:
-    - GeneralResponse
+    		- GeneralResponse
 		- Data
 		- Children
 		- DataChildren
