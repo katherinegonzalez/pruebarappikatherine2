@@ -19,11 +19,13 @@
 		- CircleAdapter(paquete util): permite dar forma circular a la imagen de cada item de la lista.
 		
 	* DetailActivity: Contiene la lógica referente a la interfaz activity_detail. Aquí se validan y fijan los datos en la interfaz de detalle. Hace uso de las clases:
+		
 		- DatFormat (paquete util): permite darle formato a la fecha.
 		- ValidateString (paquete util): permite validar si un valor es nullo o vacío.
 	 
 * Capa de datos o persistencia: En esta capa se encuentran las clases que están en el paquete model, las cuales permiten fijar y obtener los datos de los temas, ya sea mapeando la respuesta desde el endpoint de la API o mapeando la información que se ha guardado en forma de json el dispositivo. Estas clases son:
-    		- GeneralResponse
+    		
+		- GeneralResponse
 		- Data
 		- Children
 		- DataChildren
