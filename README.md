@@ -45,3 +45,5 @@ Por otro lado se encuentran también dentro del paquete util las clases:
 * Se puede visualizar el detalle de cada tema
 * Funciona tanto online como offline (caché)
 * Funcionamiento y diseño tanto en landscape como portrait.
+ 
+ * Adicionalmente se realizó un buscador y se hicieron algunas pruebas unitarias.
